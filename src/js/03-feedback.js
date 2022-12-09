@@ -1,4 +1,4 @@
-import throttle from 'lodash.throttle';
+import _throttle from 'lodash.throttle';
 const formEl = document.querySelector('.feedback-form');
 
 const dataEl = {};
@@ -8,7 +8,7 @@ onFormData = e => {
   localStorage.setItem('feedback-form-state', JSON.stringify(dataEl));
 };
 
-onSubmitForm = e => {
+onSubmitForm = (e)=> {
   e.preventDefault();
 
   const localFeedbackForm = JSON.parse(
@@ -30,5 +30,5 @@ dataFormLoad = () => {
 };
 
 dataFormLoad();
-formEl.addEventListener('input', throttle(onFormData, 500));
+formEl.addEventListener('input', _throttle(onFormData, 500));
 formEl.addEventListener('submit', onSubmitForm);
